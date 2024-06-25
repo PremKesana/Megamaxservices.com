@@ -1,0 +1,42 @@
+<!Doctype html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Purchase Amount: </td>
+            <td><input type="number" class="product-buying-price"></td>
+        </tr>
+        <tr>
+         	<td>Sales Amount:</td>
+            <td> <input type="number" class="product-selling-price"></td>
+         </tr>
+         <tr>
+            <td>Net Profit: </td>
+            <td class="net-profit"></td>
+        </tr>
+        <tr>
+            <td>Net Percent: </td>
+            <td class="net-profit-percent"></td>
+        </tr>
+    </table>
+    <script>
+        $('.product-buying-price, .product-selling-price').on('blur', function(e) {
+            var row = $(this).closest('tr');
+            var buying_pr = $('.product-buying-price').val(),
+                selling_pr = $('.product-selling-price').val(),
+                net_profit = $('.net-profit', row);
+            buy_pr = parseFloat(buying_pr);
+            sell_pr = parseFloat(selling_pr);
+            if (!isNaN(buy_pr) && !isNaN(sell_pr)) {
+                $('.net-profit').text((sell_pr - buy_pr).toFixed(2));
+				var net_profit_amount = sell_pr - buy_pr;
+				$('.net-profit-percent').text(((net_profit_amount / buy_pr) * 100).toFixed(2) + "%");
+				
+            }
+        });
+    </script>
+</body>
+</html>

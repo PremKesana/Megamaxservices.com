@@ -1,0 +1,68 @@
+# BEGIN WordPress
+# The directives (lines) between "BEGIN WordPress" and "END WordPress" are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+    
+        # RewriteCond %{HTTPS} off
+        # RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+    
+        # RewriteCond %{HTTP_HOST} !^www\.
+        # RewriteCond %{HTTPS}s on(s)|offs()
+        # RewriteRule ^ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [NE,L,R]
+    
+	RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+	RewriteBase /
+        # RewriteRule ^hire-(.*)$ /hire/?hire=$1 [L]
+    
+	RewriteRule ^index\.php$ - [L]
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress
+
+# BEGIN WP-Optimize Browser Cache
+<IfModule mod_expires.c>
+	ExpiresActive On
+	ExpiresByType text/css "access 1 day"
+	ExpiresByType text/html "access 1 day"
+	ExpiresByType image/gif "access 1 day"
+	ExpiresByType image/png "access 1 day"
+	ExpiresByType image/jpg "access 1 day"
+	ExpiresByType image/jpeg "access 1 day"
+	ExpiresByType image/webp "access 1 day"
+	ExpiresByType image/x-icon "access 1 day"
+	ExpiresByType application/pdf "access 1 day"
+	ExpiresByType application/javascript "access 1 day"
+	ExpiresByType text/x-javascript "access 1 day"
+	ExpiresByType application/x-shockwave-flash "access 1 day"
+	ExpiresDefault "access 1 day"
+</IfModule>
+
+<IfModule mod_headers.c>
+	<filesMatch "\.(ico|jpe?g|png|gif|webp|swf)$">
+		Header set Cache-Control "public"
+	</filesMatch>
+	<filesMatch "\.(css)$">
+		Header set Cache-Control "public"
+	</filesMatch>
+	<filesMatch "\.(js)$">
+		Header set Cache-Control "private"
+	</filesMatch>
+	<filesMatch "\.(x?html?|php)$">
+		Header set Cache-Control "private, must-revalidate"
+	</filesMatch>
+</IfModule>
+
+#Disable ETag
+FileETag None
+# END WP-Optimize Browser Cache
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php74” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php74 .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit

@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /wp-admin
+Disallow: /tag
+Disallow: /category
+Disallow: /author
+
+Sitemap: https://www.megamaxservices.com/sitemap.xml

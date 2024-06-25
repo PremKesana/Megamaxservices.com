@@ -1,0 +1,16 @@
+{
+    "name": "Megamax Services",
+    "short_name": "MS",
+    "start_url": ".",
+    "background_color": "#eeeeee",
+    "theme_color": "#F36D35",
+    "display": "standalone",
+    "description": "Empowering Business with Emerging Technologies",
+    "icons": [
+        {
+            "src": "wp-content/themes/twentytwentyone-child/assets/images/app-logo.png",
+            "sizes": "150x150",
+            "type": "image/png"
+        }
+    ]
+}
